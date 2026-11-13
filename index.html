@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mahrad Ghazli</title>
+<meta name="description" content="ML systems engineer. Edge AI, always-on audio models and LLM agents. Builder of Noban, an on-device assistant for elderly emergency response.">
+<meta name="theme-color" content="#0a0b0d">
+<meta property="og:title" content="Mahrad Ghazli">
+<meta property="og:description" content="I build AI that runs on the device, close to the metal, and agents that answer from real data.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0b0d'/%3E%3Cpath d='M6 34h10l5-18 8 34 7-28 5 12h17' fill='none' stroke='%236df0b0' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;450;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+:root{
+  --bg:#0a0b0d; --bg2:#101216; --ink:#ecebe6; --mute:#8b9098; --line:#1d2026; --acc:#6df0b0; --accink:#06140d;
+  --serif:'Instrument Serif',Georgia,'Times New Roman',serif;
+  --sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme:light){
+  :root:not([data-theme="dark"]){
+    --bg:#f4f2ec; --bg2:#ebe8e0; --ink:#101113; --mute:#5b5f67; --line:#d8d4c8; --acc:#0b7d52; --accink:#f4f2ec; color-scheme:light;
+  }
+}
+:root[data-theme="light"]{
+  --bg:#f4f2ec; --bg2:#ebe8e0; --ink:#101113; --mute:#5b5f67; --line:#d8d4c8; --acc:#0b7d52; --accink:#f4f2ec; color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:450 16px/1.65 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.07;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--acc);color:var(--accink)}
+.wrap{width:min(1080px,100% - 48px);margin-inline:auto;position:relative;z-index:1}
+.mono{font-family:var(--mono);font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;color:var(--mute)}
+
+/* top bar */
+.top{position:fixed;top:0;left:0;right:0;z-index:10;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);background:color-mix(in srgb,var(--bg) 70%,transparent);border-bottom:1px solid transparent;transition:border-color .3s}
+.top.scrolled{border-color:var(--line)}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;height:56px}
+.top nav{display:flex;gap:22px;align-items:center}
+.top nav a{color:var(--mute);transition:color .2s}
+.top nav a:hover{color:var(--ink)}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.8rem;color:var(--ink)}
+.logo i{width:8px;height:8px;border-radius:50%;background:var(--acc);box-shadow:0 0 12px var(--acc);animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.35}}
+#theme{background:none;border:1px solid var(--line);color:var(--mute);width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:.85rem;transition:.2s}
+#theme:hover{color:var(--ink);border-color:var(--mute)}
+
+/* hero */
+.hero{min-height:max(100svh,820px);display:flex;flex-direction:column;justify-content:flex-start;padding:max(96px,13vh) 0 40px;position:relative;overflow:hidden}
+.hero .kicker{margin-bottom:22px;display:flex;align-items:center;gap:12px}
+.hero .kicker::before{content:"";width:34px;height:1px;background:var(--acc)}
+h1{font:400 clamp(3.4rem,11.5vw,9.4rem)/.9 var(--serif);letter-spacing:-.025em}
+h1 em{font-style:italic;color:var(--acc)}
+.lead{max-width:34ch;margin-top:30px;font-size:clamp(1.15rem,2.1vw,1.5rem);line-height:1.45;color:var(--ink)}
+.lead span{color:var(--mute)}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border:1px solid var(--line);border-radius:999px;font-size:.92rem;transition:.25s;background:transparent;color:var(--ink)}
+.btn:hover{border-color:var(--ink);transform:translateY(-1px)}
+.btn.primary{background:var(--acc);color:var(--accink);border-color:var(--acc);font-weight:500}
+.btn.primary:hover{box-shadow:0 8px 30px -8px var(--acc)}
+.wave{position:absolute;left:0;right:0;bottom:0;height:40%;z-index:0;cursor:crosshair}
+#wave{width:100%;height:100%;display:block}
+.status{position:absolute;left:max(24px,calc((100% - 1080px)/2));right:max(24px,calc((100% - 1080px)/2));bottom:22px;z-index:2;display:flex;gap:10px;align-items:center;justify-content:space-between}
+.status .loc{margin-right:auto}
+.status .live{display:flex;gap:10px}
+.status b{font-weight:500;color:var(--ink);transition:color .2s}
+.status.hit b{color:var(--acc)}
+
+/* sections */
+section{padding:104px 0 0;position:relative;z-index:1}
+.sec-h{display:flex;align-items:baseline;gap:18px;margin-bottom:38px;border-bottom:1px solid var(--line);padding-bottom:16px}
+.sec-h h2{font:400 clamp(2rem,4.6vw,3.2rem)/1 var(--serif);letter-spacing:-.01em}
+.role{display:grid;grid-template-columns:230px 1fr;gap:20px 56px;padding:34px 0;border-bottom:1px solid var(--line)}
+.role:first-of-type{padding-top:0}
+.role h3{font:400 2rem/1.05 var(--serif)}
+.role .when{margin-top:8px;display:block}
+.role p{max-width:62ch;color:color-mix(in srgb,var(--ink) 86%,var(--mute))}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;margin-top:26px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.stat{background:var(--bg);padding:18px 18px 16px}
+.stat b{display:block;font:400 2.1rem/1 var(--serif);color:var(--acc);letter-spacing:-.01em}
+.stat span{display:block;margin-top:8px;font-size:.8rem;line-height:1.35;color:var(--mute)}
+
+.papers{list-style:none}
+.papers li{display:grid;grid-template-columns:230px 1fr;gap:6px 56px;padding:20px 0;border-bottom:1px solid var(--line)}
+.papers .tag{align-self:start}
+.papers .tag.ok{color:var(--acc)}
+.papers p{font-family:var(--serif);font-size:1.4rem;line-height:1.25}
+.papers small{display:block;margin-top:6px;color:var(--mute);font-size:.86rem}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px}
+.card{position:relative;display:flex;flex-direction:column;gap:12px;padding:24px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,var(--bg2),var(--bg));transition:.3s;overflow:hidden}
+.card::after{content:"";position:absolute;left:0;top:0;height:2px;width:0;background:var(--acc);transition:width .4s}
+.card:hover{border-color:color-mix(in srgb,var(--acc) 50%,var(--line));transform:translateY(-3px)}
+.card:hover::after{width:100%}
+.card h3{font:400 1.55rem/1.1 var(--serif)}
+.card p{color:var(--mute);font-size:.94rem;flex:1}
+.card .m{color:var(--acc)}
+.card .go{position:absolute;right:20px;top:20px;color:var(--mute);transition:.3s}
+.card:hover .go{color:var(--acc);transform:translate(2px,-2px)}
+
+.stack{display:grid;gap:0}
+.stack div{display:grid;grid-template-columns:230px 1fr;gap:6px 56px;padding:16px 0;border-bottom:1px solid var(--line)}
+.stack p{color:color-mix(in srgb,var(--ink) 86%,var(--mute))}
+
+footer{padding:110px 0 54px;position:relative;z-index:1}
+footer .big{font:400 clamp(2.2rem,6.4vw,5rem)/1 var(--serif);letter-spacing:-.02em;max-width:16ch}
+footer .big a{color:var(--acc);border-bottom:1px solid color-mix(in srgb,var(--acc) 40%,transparent);transition:.2s}
+footer .big a:hover{border-color:var(--acc)}
+footer .row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;margin-top:70px;padding-top:20px;border-top:1px solid var(--line)}
+
+.js .rv{opacity:0;transform:translateY(16px);transition:opacity .8s ease,transform .8s ease}
+.js .rv.in{opacity:1;transform:none}
+
+@media (max-width:760px){
+  .stat:last-child:nth-child(odd){grid-column:1/-1}
+  .role,.papers li,.stack div{grid-template-columns:1fr}
+  .top nav a:not(#theme){display:none}
+  .status{flex-direction:column;align-items:flex-start;gap:6px}
+  .hero{padding-top:84px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js .rv{opacity:1;transform:none;transition:none}
+  .logo i{animation:none}
+  .card,.btn{transition:none}
+}
+</style>
+</head>
+<body>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="logo" href="#"><i></i>mahrad.ghazli</a>
+    <nav class="mono">
+      <a href="#work">Work</a>
+      <a href="#research">Research</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <button id="theme" aria-label="Switch theme" title="Switch theme">◐</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="wrap">
+      <div class="kicker mono">ML systems engineer · Edge AI · LLM agents</div>
+      <h1>Mahrad<br><em>Ghazli</em></h1>
+      <p class="lead">I build AI that runs on the device, close to the metal, <span>and agents that answer from real data.</span></p>
+      <div class="cta">
+        <a class="btn primary" href="mailto:mge.goat@gmail.com">Say hello</a>
+        <a class="btn" href="https://github.com/MGE-GOAT" target="_blank" rel="noopener">GitHub ↗</a>
+        <a class="btn" href="Mahrad_Ghazli_Resume.pdf">Résumé · PDF</a>
+        <a class="btn" href="Mahrad_Ghazli_Academic_CV.pdf">Academic CV · PDF</a>
+      </div>
+    </div>
+    <div class="wave" id="wavebox" title="Click the line">
+      <canvas id="wave"></canvas>
+      <div class="status mono" id="status"><span class="loc">Tehran · open to remote work and relocation</span><span class="live"><span>mic</span><b id="state">listening</b></span></div>
+    </div>
+  </div>
+
+  <section id="work">
+    <div class="wrap">
+      <div class="sec-h rv"><span class="mono">01</span><h2>Work</h2></div>
+
+      <div class="role rv">
+        <div>
+          <h3>Noban</h3>
+          <span class="mono when">Nobin · Oct 2024 to now</span>
+        </div>
+        <div>
+          <p>An assistant for elderly and disabled people that calls for help when something goes wrong. I am the sole engineer and built the device, the Android app and the server. Fall detection, the wake word, distress sounds and voice commands all run on a Raspberry Pi. The server only signals and relays: calls, push, and encrypted voice notes and clips it cannot read.</p>
+          <div class="stats">
+            <div class="stat"><b>~20 ms</b><span>wake word on a Raspberry Pi 4</span></div>
+            <div class="stat"><b>182 KB</b><span>INT8 wake-word model</span></div>
+            <div class="stat"><b>60 → 3</b><span>false activations in a 388 h stress test</span></div>
+            <div class="stat"><b>4</b><span>models, all running on the device</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="role rv">
+        <div>
+          <h3>Peekage</h3>
+          <span class="mono when">Applied AI Scientist · Feb 2026 to now</span>
+        </div>
+        <div>
+          <p>PeekAI answers campaign managers' questions from live data. I rebuilt its core as one tool-using agent where code computes every number and the model cannot type its own. Peek Design is a chat that builds a survey step by step. I built its Audience and Context agents and the coordinator that routes each message across five steps.</p>
+          <div class="stats">
+            <div class="stat"><b>12 → 2</b><span>model calls for a chart turn</span></div>
+            <div class="stat"><b>110 → 66</b><span>files in the PeekAI core</span></div>
+            <div class="stat"><b>5</b><span>chat steps, one coordinator</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="research">
+    <div class="wrap">
+      <div class="sec-h rv"><span class="mono">02</span><h2>Research</h2></div>
+      <ul class="papers rv">
+        <li><span class="mono tag ok">ICBME 2026 · accepted</span>
+          <div><p>Noban: An Edge-Triggered Private Voice Assistant for Elderly Emergency Response</p><small>M. Ghazli, H. Mohammadzadeh</small></div></li>
+        <li><span class="mono tag">IEEE Sensors Journal · under review</span>
+          <div><p>A Bench-Measurement Framework for Anticipating Microphone-Induced Degradation of Always-On Keyword Spotting</p><small>M. Ghazli, H. Mohammadzadeh</small></div></li>
+        <li><span class="mono tag">ICEE 2027 · in preparation</span>
+          <div><p>A Compact Persian Wake-Word Model for Always-Listening Devices</p><small>M. Ghazli, H. Mohammadzadeh</small></div></li>
+      </ul>
+      <p class="mono rv" style="margin-top:22px">M.Sc. Biomedical Engineering (Bioelectric), Sharif University of Technology · advisor Dr. Hoda Mohammadzadeh</p>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <div class="sec-h rv"><span class="mono">03</span><h2>Open source</h2></div>
+      <div class="grid">
+        <a class="card rv" href="https://github.com/MGE-GOAT/Wake-Up" target="_blank" rel="noopener"><span class="go">↗</span>
+          <span class="mono">C++ · Python · Dart</span><h3>Wake-Up</h3>
+          <p>The whole Noban stack in one repo: the device, the server and the companion app.</p><span class="mono m">edge AI</span></a>
+        <a class="card rv" href="https://github.com/MGE-GOAT/MGE_GOAT" target="_blank" rel="noopener"><span class="go">↗</span>
+          <span class="mono">Rust</span><h3>MGE_GOAT</h3>
+          <p>An agentic coding CLI written from scratch. Tool-use loop, local llama.cpp with remote fallback, MCP and plugins.</p><span class="mono m">~13k lines</span></a>
+        <a class="card rv" href="https://github.com/MGE-GOAT/Ebpf-Syscall-Anomaly-Detector" target="_blank" rel="noopener"><span class="go">↗</span>
+          <span class="mono">C · Rust · Python</span><h3>eBPF Anomaly Detector</h3>
+          <p>A kernel-level host intrusion detector. It caught an injected port scan on a live kernel.</p><span class="mono m">8/8 caught · ~0.5% false positives</span></a>
+        <a class="card rv" href="https://github.com/MGE-GOAT/Polyglot-Graphrag-Security-Assistant" target="_blank" rel="noopener"><span class="go">↗</span>
+          <span class="mono">Python · Perl · Ruby</span><h3>GraphRAG Security Assistant</h3>
+          <p>A grounded question-answering assistant. A QLoRA fine-tune on an RTX 3050 taught it to refuse when it has no evidence.</p><span class="mono m">refusal accuracy 33% → 100%</span></a>
+        <a class="card rv" href="https://github.com/MGE-GOAT/Int8-Keyword-Spotting-Tinyml" target="_blank" rel="noopener"><span class="go">↗</span>
+          <span class="mono">Python · C++</span><h3>INT8 TinyML Keyword Spotting</h3>
+          <p>A quantized keyword-spotting CNN with a C array export for microcontrollers.</p><span class="mono m">98 KB · 0.06 ms on CPU</span></a>
+        <a class="card rv" href="https://github.com/MGE-GOAT/Deep-Rl-Cpu-Governor" target="_blank" rel="noopener"><span class="go">↗</span>
+          <span class="mono">Python · PPO</span><h3>Deep-RL CPU Governor</h3>
+          <p>A reinforcement-learning policy for CPU frequency, checked against real Intel RAPL energy counters.</p><span class="mono m">44% energy difference</span></a>
+      </div>
+      <p class="mono rv" style="margin-top:22px"><a href="https://github.com/MGE-GOAT?tab=repositories" target="_blank" rel="noopener" style="color:var(--acc)">All repositories ↗</a></p>
+    </div>
+  </section>
+
+  <section id="stack">
+    <div class="wrap">
+      <div class="sec-h rv"><span class="mono">04</span><h2>Toolbox</h2></div>
+      <div class="stack rv">
+        <div><span class="mono">Languages</span><p>Python, C++, C, Rust, Bash, SQL, Dart</p></div>
+        <div><span class="mono">ML</span><p>PyTorch, TensorFlow and TFLite, quantization-aware training, on-device inference, ONNX Runtime, scikit-learn, OpenCV</p></div>
+        <div><span class="mono">Agents</span><p>LangGraph, LangChain, tool-using agents, RAG, GraphRAG, (Q)LoRA, evals, local LLMs with llama.cpp</p></div>
+        <div><span class="mono">Systems</span><p>Linux, eBPF, real-time audio, Docker, Raspberry Pi, FastAPI, gRPC, WebRTC, MQTT, PostgreSQL, Airflow</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <p class="big rv">Building something on the device? <a href="mailto:mge.goat@gmail.com">Let's talk.</a></p>
+    <div class="row mono">
+      <span>mge.goat@gmail.com</span>
+      <span><a href="https://github.com/MGE-GOAT" target="_blank" rel="noopener">github.com/MGE-GOAT</a></span>
+      <span>© 2026 Mahrad Ghazli</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement, key='theme';
+  try{var s=localStorage.getItem(key); if(s) root.setAttribute('data-theme',s)}catch(e){}
+  document.getElementById('theme').addEventListener('click',function(){
+    var dark=getComputedStyle(root).getPropertyValue('color-scheme').indexOf('dark')>-1;
+    var next=dark?'light':'dark'; root.setAttribute('data-theme',next);
+    try{localStorage.setItem(key,next)}catch(e){}
+    draw.color=null;
+  });
+  var top=document.getElementById('top');
+  addEventListener('scroll',function(){top.classList.toggle('scrolled',scrollY>8)},{passive:true});
+
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+
+  /* waveform: a live "microphone" line. Move over it to excite it, click to trigger a wake word. */
+  var cv=document.getElementById('wave'), box=document.getElementById('wavebox'), ctx=cv.getContext('2d');
+  var st=document.getElementById('status'), state=document.getElementById('state');
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var W=0,H=0,dpr=1,mx=-1,boost=0,hitUntil=0,t0=performance.now();
+  function size(){dpr=Math.min(devicePixelRatio||1,2);W=box.clientWidth;H=box.clientHeight;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}
+  addEventListener('resize',size); size();
+  box.addEventListener('pointermove',function(e){mx=e.clientX-box.getBoundingClientRect().left});
+  box.addEventListener('pointerleave',function(){mx=-1});
+  box.addEventListener('click',function(){
+    boost=1; hitUntil=performance.now()+1900; state.textContent='wake word detected'; st.classList.add('hit');
+  });
+  function color(){
+    if(!draw.color){var c=getComputedStyle(root).getPropertyValue('--acc').trim()||'#6df0b0'; draw.color=c}
+    return draw.color;
+  }
+  function draw(now){
+    var t=(now-t0)/1000; ctx.clearRect(0,0,W,H);
+    if(now>hitUntil&&st.classList.contains('hit')){st.classList.remove('hit');state.textContent='listening'}
+    boost*=.965;
+    var mid=H*.5, col=color();
+    for(var layer=0;layer<3;layer++){
+      ctx.beginPath();
+      for(var x=0;x<=W;x+=3){
+        var u=x/W;
+        var env=Math.sin(Math.PI*u);               /* quiet at the edges */
+        var near=mx<0?0:Math.exp(-Math.pow((x-mx)/(W*.09),2));
+        var amp=(10+layer*4)*env + near*46 + boost*70*Math.exp(-Math.pow((u-.5)/.28,2));
+        var y=mid + amp*( Math.sin(u*14+t*1.6+layer*1.3)*.6 + Math.sin(u*31-t*2.3+layer)*.3 + Math.sin(u*5+t*.7)*.5 )
+                    + layer*3;
+        if(x===0)ctx.moveTo(x,y); else ctx.lineTo(x,y);
+      }
+      ctx.lineWidth=layer===0?1.8:1;
+      ctx.strokeStyle=col; ctx.globalAlpha=layer===0?.95:.22/layer; ctx.stroke();
+    }
+    ctx.globalAlpha=1;
+    if(!reduce) requestAnimationFrame(draw);
+  }
+  draw.color=null;
+  if(reduce){draw(performance.now()+800)} else requestAnimationFrame(draw);
+})();
+</script>
+</body>
+</html>
