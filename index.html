@@ -279,6 +279,56 @@ footer .big a:hover{border-color:var(--hot)}
 .js .tool.in .chip:hover{animation:none;opacity:1}
 @media (max-width:760px){.tools{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){.js .tool .chip{opacity:1;transform:none;animation:none !important}}
+
+/* ---------- brand mark, featured project, papers ---------- */
+.brandmark{width:44px;height:auto;flex:none;filter:drop-shadow(0 6px 14px color-mix(in srgb,var(--hot) 35%,transparent))}
+.feat{display:grid;grid-template-columns:200px 1fr;gap:26px 34px;padding:30px;border:1px solid color-mix(in srgb,var(--acc2) 35%,var(--line));border-radius:22px;position:relative;overflow:hidden;
+  background:linear-gradient(150deg,color-mix(in srgb,var(--acc2) 11%,var(--bg2)),var(--bg) 65%)}
+.feat::after{content:"";position:absolute;right:-80px;top:-80px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--acc) 22%,transparent),transparent 70%);pointer-events:none}
+.feat-art{display:grid;place-items:center}
+.kanban{width:100%;max-width:200px;overflow:visible}
+.kanban .col{fill:color-mix(in srgb,var(--ink) 5%,transparent);stroke:var(--line);stroke-width:1.5}
+.kanban .kc{fill:var(--m-body);stroke:var(--ink);stroke-width:1.8}
+.kanban .k1{fill:color-mix(in srgb,var(--acc) 30%,var(--m-body))}.kanban .k3{fill:color-mix(in srgb,var(--hot) 30%,var(--m-body))}
+.kanban .kmove{fill:var(--acc2);stroke:var(--ink)}
+.kanban .kd{fill:var(--ink)}
+.feat-body h3{font:400 2.2rem/1.05 var(--serif);margin:8px 0 10px}
+.feat .chips{--c:var(--acc2)}
+.feat .chip:nth-child(3n+2){--c:var(--acc)}.feat .chip:nth-child(3n){--c:var(--hot)}
+.feat-body p{max-width:60ch;color:color-mix(in srgb,var(--ink) 84%,var(--mute));margin-bottom:18px}
+.tag-priv{color:var(--hot)}
+.feat-stats{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.feat-stats div{background:var(--bg);padding:16px 18px}
+.feat-stats b{display:block;font:400 1.9rem/1 var(--serif);background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.feat-stats span{display:block;margin-top:6px;font-size:.8rem;color:var(--mute)}
+
+.plist{display:grid;gap:14px}
+.paper .tag.ok{color:var(--acc)}.paper .tag.rev{color:var(--acc2)}.paper .tag.prep{color:var(--hot)}
+.paper{display:grid;grid-template-columns:76px 1fr 230px;gap:22px 28px;align-items:center;padding:26px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(180deg,var(--bg2),var(--bg));transition:.3s;position:relative;overflow:hidden}
+.paper:hover{border-color:color-mix(in srgb,var(--acc2) 50%,var(--line));transform:translateY(-2px)}
+.paper .ic{width:68px;height:68px}
+.p-top{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
+.paper h3{font:400 1.45rem/1.2 var(--serif);margin-bottom:8px}
+.paper p{color:var(--mute);font-size:.94rem;max-width:62ch}
+.paper small{display:block;margin-top:10px;color:var(--mute);font-size:.82rem}
+.p-dl{margin-top:14px;padding:8px 14px;font-size:.85rem}
+.track{list-style:none;display:flex;justify-content:space-between;position:relative;padding-top:6px}
+.track::before,.track::after{content:"";position:absolute;left:8px;right:8px;top:14px;height:2px;border-radius:2px}
+.track::before{background:var(--line)}
+.track::after{background:var(--grad);transform-origin:0 50%;transform:scaleX(0);transition:transform 1.4s cubic-bezier(.2,.8,.2,1) .3s}
+.paper.in .track::after{transform:scaleX(calc((var(--done,0))/(var(--n) - 1)))}
+.track li{position:relative;z-index:1;display:grid;justify-items:center;gap:8px;font:400 .72rem/1 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--mute)}
+.track li i{width:16px;height:16px;border-radius:50%;background:var(--bg);border:2px solid var(--line)}
+.track li.done i{background:var(--acc);border-color:var(--acc);box-shadow:0 0 12px color-mix(in srgb,var(--acc) 60%,transparent)}
+.track li.done{color:var(--ink)}
+.track li.cur i{border-color:var(--hot);animation:ping 1.8s ease-out infinite}
+.track li.cur{color:var(--hot)}
+@keyframes ping{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--hot) 60%,transparent)}100%{box-shadow:0 0 0 12px transparent}}
+@media (max-width:860px){
+  .feat{grid-template-columns:1fr}.feat-art{justify-items:start}
+  .paper{grid-template-columns:1fr}.p-ic{display:none}
+}
+@media (prefers-reduced-motion:reduce){.track::after{transition:none}.track li.cur i{animation:none}.kanban *{animation:none}}
 </style>
 </head>
 <body>
@@ -357,7 +407,7 @@ footer .big a:hover{border-color:var(--hot)}
 
       <div class="role rv">
         <div>
-          <div class="id"><svg class="ic" viewBox="0 0 64 64" aria-hidden="true"><path class="sh" d="M10 36 Q36 12 62 36 Q36 60 10 36 Z"/><path class="b" d="M6 32 Q32 8 58 32 Q32 56 6 32 Z"/><circle class="f" cx="32" cy="32" r="12"/><rect class="dot" x="25.5" y="33" width="4.4" height="6" rx="1.2"/><rect class="dot" x="30" y="29" width="4.4" height="10" rx="1.2"/><rect class="dot" x="34.5" y="25" width="4.4" height="14" rx="1.2"/></svg><h3>Peekage</h3></div>
+          <div class="id"><img class="brandmark" src="assets/peekage-mark.svg" alt="Peekage" width="44" height="42"><h3>Peekage</h3></div>
           <span class="mono when" style="margin-top:14px">Applied AI Scientist · Feb 2026 to now</span>
         </div>
         <div>
@@ -375,21 +425,67 @@ footer .big a:hover{border-color:var(--hot)}
   <section id="research">
     <div class="wrap">
       <div class="sec-h rv"><span class="mono">02</span><h2>Research</h2></div>
-      <ul class="papers rv">
-        <li><span class="mono tag ok">ICBME 2026 · accepted</span>
-          <div><p>Noban: An Edge-Triggered Private Voice Assistant for Elderly Emergency Response</p><small>M. Ghazli, H. Mohammadzadeh</small></div></li>
-        <li><span class="mono tag rev">IEEE Sensors Journal · under review</span>
-          <div><p>A Bench-Measurement Framework for Anticipating Microphone-Induced Degradation of Always-On Keyword Spotting</p><small>M. Ghazli, H. Mohammadzadeh</small></div></li>
-        <li><span class="mono tag prep">ICEE 2027 · in preparation</span>
-          <div><p>A Compact Persian Wake-Word Model for Always-Listening Devices</p><small>M. Ghazli, H. Mohammadzadeh</small></div></li>
-      </ul>
+      <div class="plist">
+        <article class="paper rv">
+          <div class="p-ic"><svg class="ic" viewBox="0 0 64 64" aria-hidden="true"><rect class="sh" x="12" y="14" width="42" height="40" rx="12"/><rect class="b" x="8" y="10" width="42" height="40" rx="12"/><rect class="scr" x="14" y="17" width="30" height="21" rx="8"/><rect class="eye" x="21" y="23" width="5" height="9" rx="2.5"/><rect class="eye" x="32" y="23" width="5" height="9" rx="2.5"/><circle class="dot" cx="18" cy="44" r="1.8"/><circle class="dot" cx="24" cy="44" r="1.8"/><circle class="dot" cx="30" cy="44" r="1.8"/><circle fill="var(--acc)" cx="43" cy="44" r="2.4"/></svg></div>
+          <div class="p-main">
+            <div class="p-top"><span class="mono tag ok">Accepted</span><span class="mono">ICBME 2026</span></div>
+            <h3>Noban: An Edge-Triggered Private Voice Assistant for Elderly Emergency Response</h3>
+            <p>An assistant that keeps audio on the device and calls for help when an emergency happens.</p>
+            <small>M. Ghazli, H. Mohammadzadeh</small>
+            <!-- PDF button, enable after the co-author agrees: <a class="btn p-dl" href="papers/FILE.pdf" download>Download PDF</a> -->
+          </div>
+          <ol class="track" style="--n:3;--done:2"><li class="done"><i></i><span>Written</span></li><li class="done"><i></i><span>Submitted</span></li><li class="done"><i></i><span>Accepted</span></li></ol>
+        </article>
+        <article class="paper rv">
+          <div class="p-ic"><svg class="ic" viewBox="0 0 64 64" aria-hidden="true"><rect class="sh" x="28" y="13" width="18" height="30" rx="9"/><path class="o" d="M15 30 Q15 47 32 47 Q49 47 49 30 M32 47 V55 M23 55 H41"/><rect class="f" x="23" y="9" width="18" height="31" rx="9"/><circle class="dot" cx="28.5" cy="21" r="1.7"/><circle class="dot" cx="35.5" cy="21" r="1.7"/><path class="o" d="M28.5 26 Q32 30 35.5 26" style="stroke-width:2"/><path class="o wv" d="M53 22 Q57 28 53 34"/><path class="o wv w2" d="M57 18 Q63 28 57 38"/><path class="o wv" d="M11 22 Q7 28 11 34"/></svg></div>
+          <div class="p-main">
+            <div class="p-top"><span class="mono tag rev">Under review</span><span class="mono">IEEE Sensors Journal</span></div>
+            <h3>A Bench-Measurement Framework for Anticipating Microphone-Induced Degradation of Always-On Keyword Spotting</h3>
+            <p>A bench method that measures how a microphone changes keyword-spotting accuracy before the device is deployed.</p>
+            <small>M. Ghazli, H. Mohammadzadeh</small>
+            <!-- PDF button, enable after the co-author agrees: <a class="btn p-dl" href="papers/FILE.pdf" download>Download PDF</a> -->
+          </div>
+          <ol class="track" style="--n:3;--done:1"><li class="done"><i></i><span>Written</span></li><li class="done"><i></i><span>Submitted</span></li><li class="cur"><i></i><span>Accepted</span></li></ol>
+        </article>
+        <article class="paper rv">
+          <div class="p-ic"><svg class="ic" viewBox="0 0 64 64" aria-hidden="true"><path class="o" d="M12 20 L32 12 M12 20 L32 32 M12 44 L32 32 M12 44 L32 54 M12 20 L32 54 M32 12 L52 32 M32 32 L52 32 M32 54 L52 32" style="stroke-width:1.8;opacity:.8"/><circle class="b" cx="12" cy="20" r="6"/><circle class="b" cx="12" cy="44" r="6"/><circle class="b" cx="32" cy="12" r="6"/><circle class="b" cx="32" cy="54" r="6"/><circle class="f" cx="32" cy="32" r="8"/><circle class="dot" cx="29.5" cy="31" r="1.4"/><circle class="dot" cx="34.5" cy="31" r="1.4"/><path class="o" d="M29 35.5 Q32 38 35 35.5" style="stroke-width:2"/><circle class="b" cx="52" cy="32" r="7"/></svg></div>
+          <div class="p-main">
+            <div class="p-top"><span class="mono tag prep">In preparation</span><span class="mono">ICEE 2027</span></div>
+            <h3>A Compact Persian Wake-Word Model for Always-Listening Devices</h3>
+            <p>A small wake-word model for Persian that can stay on all day on low-power hardware.</p>
+            <small>M. Ghazli, H. Mohammadzadeh</small>
+            <!-- PDF button, enable after the co-author agrees: <a class="btn p-dl" href="papers/FILE.pdf" download>Download PDF</a> -->
+          </div>
+          <ol class="track" style="--n:3;--done:0"><li class="cur"><i></i><span>Written</span></li><li class=""><i></i><span>Submitted</span></li><li class=""><i></i><span>Accepted</span></li></ol>
+        </article>
+      </div>
       <p class="mono rv" style="margin-top:22px">M.Sc. Biomedical Engineering (Bioelectric), Sharif University of Technology · advisor Dr. Hoda Mohammadzadeh</p>
     </div>
   </section>
 
   <section id="projects">
     <div class="wrap">
-      <div class="sec-h rv"><span class="mono">03</span><h2>Open source</h2></div>
+      <div class="sec-h rv"><span class="mono">03</span><h2>Projects</h2></div>
+      <div class="feat rv">
+        <div class="feat-art"><svg class="kanban" viewBox="0 0 140 100" aria-hidden="true">
+  <rect class="col" x="4" y="6" width="38" height="88" rx="9"/><rect class="col" x="51" y="6" width="38" height="88" rx="9"/><rect class="col" x="98" y="6" width="38" height="88" rx="9"/>
+  <rect class="kc k1" x="9" y="14" width="28" height="18" rx="6"/><rect class="kc k2" x="9" y="38" width="28" height="18" rx="6"/>
+  <rect class="kc k3" x="56" y="14" width="28" height="18" rx="6"/>
+  <rect class="kc kmove" x="9" y="62" width="28" height="18" rx="6"><animate attributeName="x" values="9;9;56;56;103;103;9" keyTimes="0;.12;.3;.5;.68;.9;1" dur="7s" repeatCount="indefinite"/><animate attributeName="y" values="62;62;40;40;20;20;62" keyTimes="0;.12;.3;.5;.68;.9;1" dur="7s" repeatCount="indefinite"/></rect>
+  <circle class="kd" cx="19" cy="23" r="1.6"/><circle class="kd" cx="27" cy="23" r="1.6"/>
+  <circle class="kd" cx="19" cy="47" r="1.6"/><circle class="kd" cx="27" cy="47" r="1.6"/>
+  <circle class="kd" cx="66" cy="23" r="1.6"/><circle class="kd" cx="74" cy="23" r="1.6"/>
+</svg></div>
+        <div class="feat-body">
+          <span class="mono tag-priv">Private · in active development</span>
+          <h3>Team CRM</h3>
+          <p>A CRM for an in-house sales team, fully Persian with a right-to-left layout and a Jalali calendar. A drag-and-drop deal pipeline, tasks, outreach reminders, team chat, role-based permissions and a KPI dashboard. Self-hostable with Docker.</p>
+          <div class="chips"><span class="chip">Next.js 16</span><span class="chip">React 19</span><span class="chip">TypeScript</span><span class="chip">Prisma</span><span class="chip">PostgreSQL</span><span class="chip">Docker</span></div>
+        </div>
+        <div class="feat-stats"><div><b>366</b><span>commits, built solo</span></div><div><b>~830</b><span>files</span></div><div><b>RTL</b><span>Persian first</span></div></div>
+      </div>
+      <p class="mono rv" style="margin:30px 0 14px">Open source</p>
       <div class="grid">
         <a class="card rv" href="https://github.com/MGE-GOAT/Wake-Up" target="_blank" rel="noopener"><div class="top-row"><svg class="ic" viewBox="0 0 64 64" aria-hidden="true"><rect class="sh" x="12" y="14" width="42" height="40" rx="12"/><rect class="b" x="8" y="10" width="42" height="40" rx="12"/><rect class="scr" x="14" y="17" width="30" height="21" rx="8"/><rect class="eye" x="21" y="23" width="5" height="9" rx="2.5"/><rect class="eye" x="32" y="23" width="5" height="9" rx="2.5"/><circle class="dot" cx="18" cy="44" r="1.8"/><circle class="dot" cx="24" cy="44" r="1.8"/><circle class="dot" cx="30" cy="44" r="1.8"/><circle fill="var(--acc)" cx="43" cy="44" r="2.4"/></svg><span class="go" style="position:static">↗</span></div>
           <span class="mono">C++ · Python · Dart</span><h3>Wake-Up</h3>
