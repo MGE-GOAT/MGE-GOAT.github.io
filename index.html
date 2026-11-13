@@ -350,6 +350,68 @@ footer .big a:hover{border-color:var(--hot)}
   -webkit-mask-image:radial-gradient(380px circle at var(--px,50%) var(--py,25%),#000,transparent 72%);mask-image:radial-gradient(380px circle at var(--px,50%) var(--py,25%),#000,transparent 72%)}
 @media (max-width:760px){.aurora i{filter:blur(60px)}.aurora .b3{display:none}.gridfx{display:none}}
 @media (prefers-reduced-motion:reduce){.aurora i{animation:none}.aurora{transform:none}}
+
+/* ---------- v3: eyebrows, about, hero life, footer ---------- */
+.sec-h{display:block;padding-bottom:18px}
+.eyebrow{display:flex;align-items:center;gap:12px;color:var(--acc2);margin-bottom:12px}
+.eyebrow::before{content:"";width:34px;height:2px;border-radius:2px;background:var(--grad)}
+.sec-h .eyebrow+h2{margin:0}
+.about{display:grid;grid-template-columns:1.05fr 1fr;gap:34px 56px;align-items:start}
+.about-intro .big{font:400 clamp(1.7rem,3.2vw,2.5rem)/1.12 var(--serif);margin-bottom:20px}
+.about-intro p{color:color-mix(in srgb,var(--ink) 84%,var(--mute));max-width:58ch}
+.facts{list-style:none;display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.facts li{display:flex;align-items:center;gap:9px;padding:8px 14px;border:1px solid var(--line);border-radius:999px;font-size:.88rem}
+.facts i{width:7px;height:7px;border-radius:50%;background:var(--hot);box-shadow:0 0 10px var(--hot);animation:pulse 2.4s ease-in-out infinite}
+.facts li:nth-child(2) i{background:var(--acc);box-shadow:0 0 10px var(--acc)}.facts li:nth-child(3) i{background:var(--acc2);box-shadow:0 0 10px var(--acc2)}
+.about-cards{display:grid;grid-template-columns:1fr;gap:14px}
+.acard{padding:22px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(180deg,var(--bg2),var(--bg));display:grid;gap:14px;align-content:start;transition:.3s}
+.acard:hover{border-color:color-mix(in srgb,var(--acc2) 50%,var(--line));transform:translateY(-2px)}
+.acard.wide{grid-column:1/-1}
+.acard>.mono{color:var(--acc2)}
+.acard:nth-child(2)>.mono{color:var(--acc)}.acard:nth-child(3)>.mono{color:var(--hot)}
+.acard p{color:var(--mute);font-size:.92rem}
+.edu b{display:block;font:400 1.15rem/1.2 var(--serif)}
+.edu small{display:block;color:var(--mute);font-size:.82rem;margin-top:2px}
+.edu em{display:block;margin-top:6px;font:400 .72rem/1 var(--mono);font-style:normal;letter-spacing:.04em;color:var(--acc)}
+.lang{display:grid;grid-template-columns:80px 1fr 110px;gap:14px;align-items:center;font-size:.92rem}
+.lang em{font:400 .7rem/1 var(--mono);font-style:normal;color:var(--mute);letter-spacing:.04em;text-transform:uppercase}
+.pips{display:flex;gap:5px}
+.pips i{height:8px;flex:1;max-width:46px;border-radius:4px;background:var(--line);position:relative;overflow:hidden}
+.pips i::after{content:"";position:absolute;inset:0;background:var(--grad);transform:scaleX(0);transform-origin:0 50%;transition:transform .6s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--i)*110ms + 300ms)}
+.pips i.on::after{content:"";}
+.acard.in .pips i.on::after{transform:scaleX(1)}
+
+.typed{margin:18px 0 0;display:flex;align-items:center;gap:8px;text-transform:none;letter-spacing:.02em;font-size:.9rem;color:var(--ink);min-height:1.4em}
+.typed .pr{color:var(--hot)}
+.caret{width:8px;height:1.05em;background:var(--acc2);display:inline-block;animation:blinkc .9s steps(1) infinite}
+@keyframes blinkc{50%{opacity:0}}
+h1 em .ch{animation:rise .9s cubic-bezier(.2,.8,.2,1) forwards,shine 5.5s ease-in-out infinite;animation-delay:calc(var(--i)*45ms + 120ms),calc(var(--i)*140ms + 1800ms)}
+@keyframes shine{0%,70%,100%{filter:brightness(1)}85%{filter:brightness(1.55) saturate(1.2)}}
+.btn.primary{animation:glow 3.4s ease-in-out infinite}
+@keyframes glow{50%{box-shadow:0 0 28px -4px color-mix(in srgb,var(--acc2) 70%,transparent)}}
+.orbit{position:absolute;inset:0;pointer-events:none;z-index:1}
+.orb{position:absolute;left:50%;top:48%;margin:-13px 0 0 -30px;padding:6px 11px;border-radius:999px;font:500 .7rem/1 var(--mono);letter-spacing:.04em;color:var(--c);
+  border:1px solid color-mix(in srgb,var(--c) 45%,transparent);background:color-mix(in srgb,var(--bg) 78%,transparent);backdrop-filter:blur(4px);white-space:nowrap;
+  animation:orbit 26s linear infinite;animation-delay:calc(var(--o)*-4.33s);--r:min(19vw,226px)}
+@keyframes orbit{from{transform:rotate(0deg) translateX(var(--r)) rotate(0deg)}to{transform:rotate(360deg) translateX(var(--r)) rotate(-360deg)}}
+.mascot:hover .orb{animation-play-state:paused}
+
+footer{padding:90px 0 0;overflow:hidden}
+.cta-wrap{display:grid;grid-template-columns:1fr 280px;gap:30px;align-items:center}
+footer .big{max-width:19ch;margin:6px 0 28px}
+footer .big a.gshift{background:linear-gradient(90deg,var(--hot),var(--acc2),var(--acc),var(--hot));background-size:300% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;border-bottom:0;animation:gshift 7s linear infinite}
+@keyframes gshift{to{background-position:300% 0}}
+.cta-actions{display:flex;flex-wrap:wrap;gap:10px}
+.mascot.mini{position:relative;right:auto;top:auto;width:100%;max-width:280px;margin-left:auto}
+.mascot.mini .bubble{left:auto;right:6%;top:-4%}
+footer .row{margin-top:56px;position:relative;z-index:2}
+.fwave{display:block;width:200%;height:120px;margin-top:-30px;animation:fscroll 22s linear infinite;pointer-events:none}
+.fwave path{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.fwave .w1{stroke:var(--acc);stroke-width:2.4}.fwave .w2{stroke:var(--acc2);stroke-width:1.6;opacity:.7}.fwave .w3{stroke:var(--hot);stroke-width:1.4;opacity:.55}
+@keyframes fscroll{to{transform:translateX(-50%)}}
+footer{padding-bottom:0}
+@media (max-width:860px){.about{grid-template-columns:1fr}.about-cards{grid-template-columns:1fr}.cta-wrap{grid-template-columns:1fr}.mascot.mini{margin:10px 0 0;max-width:200px}.orbit{display:none}}
+@media (prefers-reduced-motion:reduce){.caret,.btn.primary,.orb,.fwave,.facts i,h1 em .ch{animation:none !important}.pips i.on::after{transform:scaleX(1)}h1 em .ch{opacity:1;transform:none}}
 </style>
 </head>
 <body>
@@ -361,6 +423,7 @@ footer .big a:hover{border-color:var(--hot)}
   <div class="wrap">
     <a class="logo" href="#"><i></i>mahrad.ghazli</a>
     <nav class="mono">
+      <a href="#about">About</a>
       <a href="#work">Work</a>
       <a href="#research">Research</a>
       <a href="#projects">Projects</a>
@@ -376,13 +439,15 @@ footer .big a:hover{border-color:var(--hot)}
       <div class="kicker mono">ML systems engineer · Edge AI · LLM agents</div>
       <h1>Mahrad<br><em>Ghazli</em></h1>
       <p class="lead">I build AI that runs on the device, close to the metal, <span>and agents that answer from real data.</span></p>
+      <p class="typed mono"><span class="pr">&gt;</span> <span id="typed"></span><i class="caret"></i></p>
       <div class="cta">
         <a class="btn primary" href="mailto:mge.goat@gmail.com">Say hello</a>
         <a class="btn" href="https://github.com/MGE-GOAT" target="_blank" rel="noopener">GitHub ↗</a>
         <a class="btn" href="Mahrad_Ghazli_Resume.pdf">Résumé · PDF</a>
         <a class="btn" href="Mahrad_Ghazli_Academic_CV.pdf">Academic CV · PDF</a>
       </div>
-      <div class="mascot" id="mascot" role="button" tabindex="0" aria-label="Say Hey Noban to the device">
+      <div class="mascot" id="mascot" data-wave="1" role="button" tabindex="0" aria-label="Say Hey Noban to the device">
+        <div class="orbit" aria-hidden="true"><span class="orb" style="--o:0;--c:var(--acc)">TFLite</span><span class="orb" style="--o:1;--c:var(--acc2)">LangGraph</span><span class="orb" style="--o:2;--c:var(--hot)">eBPF</span><span class="orb" style="--o:3;--c:var(--acc)">RAG</span><span class="orb" style="--o:4;--c:var(--acc2)">MCP</span><span class="orb" style="--o:5;--c:var(--hot)">PyTorch</span></div>
         <div class="bubble" id="bubble">Hey Noban!</div>
         <svg viewBox="0 0 320 320" aria-hidden="true">
           <ellipse cx="160" cy="296" rx="84" ry="10" fill="var(--ink)" opacity=".12"/>
@@ -392,7 +457,7 @@ footer .big a:hover{border-color:var(--hot)}
           <rect class="body" x="36" y="132" width="26" height="62" rx="13"/>
           <rect class="body" x="258" y="132" width="26" height="62" rx="13"/>
           <rect class="screen" x="86" y="96" width="148" height="104" rx="34"/>
-          <g class="eyes" id="eyes"><rect x="118" y="128" width="26" height="42" rx="13"/><rect x="176" y="128" width="26" height="42" rx="13"/></g>
+          <g class="eyes meyes" id="eyes"><rect x="118" y="128" width="26" height="42" rx="13"/><rect x="176" y="128" width="26" height="42" rx="13"/></g>
           <path class="happy" d="M114 158 Q131 132 148 158"/><path class="happy" d="M172 158 Q189 132 206 158"/>
           <circle class="led" cx="226" cy="224" r="7"/>
           <g class="dots"><circle cx="108" cy="224" r="5"/><circle cx="130" cy="224" r="5"/><circle cx="152" cy="224" r="5"/><circle cx="174" cy="224" r="5"/></g>
@@ -408,9 +473,37 @@ footer .big a:hover{border-color:var(--hot)}
   </div>
 
   <div class="ticker" aria-hidden="true"><div class="track"><span>Edge AI</span><span class="s">✦</span><span>Wake words</span><span class="s">✦</span><span>On-device</span><span class="s">✦</span><span>LLM agents</span><span class="s">✦</span><span>TinyML</span><span class="s">✦</span><span>eBPF</span><span class="s">✦</span><span>Raspberry Pi</span><span class="s">✦</span><span>Quantization</span><span class="s">✦</span><span>Tool-using agents</span><span class="s">✦</span><span>Rust</span><span class="s">✦</span><span>Edge AI</span><span class="s">✦</span><span>Wake words</span><span class="s">✦</span><span>On-device</span><span class="s">✦</span><span>LLM agents</span><span class="s">✦</span><span>TinyML</span><span class="s">✦</span><span>eBPF</span><span class="s">✦</span><span>Raspberry Pi</span><span class="s">✦</span><span>Quantization</span><span class="s">✦</span><span>Tool-using agents</span><span class="s">✦</span><span>Rust</span><span class="s">✦</span></div></div>
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-h rv"><span class="eyebrow mono">Hello</span><h2>About</h2></div>
+      <div class="about">
+        <div class="about-intro rv">
+          <p class="big">I am a machine learning engineer who builds AI close to the metal.</p>
+          <p>I design small models that run on the device and agents that answer from real data. At Nobin I built an elderly emergency assistant end to end. At Peekage and for Spun Holding I build agent systems, retrieval and automation for real products. I finished my M.Sc. in biomedical engineering at Sharif University of Technology, where my thesis was about robust on-device keyword spotting.</p>
+          <ul class="facts"><li><i></i>Tehran, Iran</li><li><i></i>Open to remote work and relocation</li><li><i></i>Linux every day</li></ul>
+        </div>
+        <div class="about-cards">
+          <div class="acard rv"><span class="mono">Education</span>
+            <div class="edu"><b>M.Sc. Biomedical Engineering</b><small>Bioelectric · Sharif University of Technology</small><em>2024 to 2026 · GPA 3.5 / 4.0</em></div>
+            <div class="edu"><b>B.Sc. Biomedical Engineering</b><small>Biomaterials · Islamic Azad University, Science and Research</small><em>2019 to 2022 · GPA 3.4 / 4.0</em></div>
+          </div>
+          <div class="acard rv"><span class="mono">Languages</span>
+            <div class="lang"><b>English</b><span class="pips"><i class="on" style="--i:0"></i><i class="on" style="--i:1"></i><i class="on" style="--i:2"></i><i class="on" style="--i:3"></i><i class="on" style="--i:4"></i></span><em>Fluent</em></div>
+            <div class="lang"><b>Persian</b><span class="pips"><i class="on" style="--i:0"></i><i class="on" style="--i:1"></i><i class="on" style="--i:2"></i><i class="on" style="--i:3"></i><i class="on" style="--i:4"></i></span><em>Native</em></div>
+            <div class="lang"><b>German</b><span class="pips"><i class="on" style="--i:0"></i><i class="on" style="--i:1"></i><i class="on" style="--i:2"></i><i class="" style="--i:3"></i><i class="" style="--i:4"></i></span><em>Intermediate</em></div>
+            <div class="lang"><b>Chinese</b><span class="pips"><i class="on" style="--i:0"></i><i class="on" style="--i:1"></i><i class="on" style="--i:2"></i><i class="" style="--i:3"></i><i class="" style="--i:4"></i></span><em>Intermediate</em></div>
+          </div>
+          <div class="acard rv wide"><span class="mono">Teaching</span>
+            <p>Teaching assistant at Sharif in Fall 2025 for Computer Vision Laboratory, Biomedical Engineering Laboratory and Neural Modeling.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="work">
     <div class="wrap">
-      <div class="sec-h rv"><span class="mono">01</span><h2>Work</h2></div>
+      <div class="sec-h rv"><span class="eyebrow mono">Where I build</span><h2>Work</h2></div>
 
       <div class="role rv">
         <div>
@@ -447,7 +540,7 @@ footer .big a:hover{border-color:var(--hot)}
 
   <section id="research">
     <div class="wrap">
-      <div class="sec-h rv"><span class="mono">02</span><h2>Research</h2></div>
+      <div class="sec-h rv"><span class="eyebrow mono">What I publish</span><h2>Research</h2></div>
       <div class="plist">
         <article class="paper rv">
           <div class="p-ic"><svg class="ic" viewBox="0 0 64 64" aria-hidden="true"><rect class="sh" x="12" y="14" width="42" height="40" rx="12"/><rect class="b" x="8" y="10" width="42" height="40" rx="12"/><rect class="scr" x="14" y="17" width="30" height="21" rx="8"/><rect class="eye" x="21" y="23" width="5" height="9" rx="2.5"/><rect class="eye" x="32" y="23" width="5" height="9" rx="2.5"/><circle class="dot" cx="18" cy="44" r="1.8"/><circle class="dot" cx="24" cy="44" r="1.8"/><circle class="dot" cx="30" cy="44" r="1.8"/><circle fill="var(--acc)" cx="43" cy="44" r="2.4"/></svg></div>
@@ -486,7 +579,7 @@ footer .big a:hover{border-color:var(--hot)}
 
   <section id="projects">
     <div class="wrap">
-      <div class="sec-h rv"><span class="mono">03</span><h2>Projects</h2></div>
+      <div class="sec-h rv"><span class="eyebrow mono">Things I made</span><h2>Projects</h2></div>
       <div class="feat rv">
         <div class="feat-art"><svg class="kanban" viewBox="0 0 140 100" aria-hidden="true">
   <rect class="col" x="4" y="6" width="38" height="88" rx="9"/><rect class="col" x="51" y="6" width="38" height="88" rx="9"/><rect class="col" x="98" y="6" width="38" height="88" rx="9"/>
@@ -532,7 +625,7 @@ footer .big a:hover{border-color:var(--hot)}
 
   <section id="stack">
     <div class="wrap">
-      <div class="sec-h rv"><span class="mono">04</span><h2>Toolbox</h2></div>
+      <div class="sec-h rv"><span class="eyebrow mono">What I build with</span><h2>Toolbox</h2></div>
       <div class="tools">
         <div class="tool t1 rv"><div class="hd"><svg class="ic" viewBox="0 0 64 64" aria-hidden="true"><rect class="sh" x="12" y="14" width="46" height="40" rx="12"/><rect class="b" x="8" y="10" width="46" height="40" rx="12"/><path class="o" d="M24 22 L15 30 L24 38 M38 22 L47 30 L38 38" style="stroke-width:3.2"/><path class="f" d="M34 18 L28 42" style="stroke-width:3.4"/><circle class="dot" cx="21" cy="45" r="1.3"/><circle class="dot" cx="41" cy="45" r="1.3"/></svg><span class="mono">Languages</span></div><div class="chips"><span class="chip">Python</span><span class="chip">C++</span><span class="chip">C</span><span class="chip">Rust</span><span class="chip">Bash</span><span class="chip">SQL</span><span class="chip">Dart</span></div></div>
         <div class="tool t2 rv"><div class="hd"><svg class="ic" viewBox="0 0 64 64" aria-hidden="true"><path class="o sig" d="M12 20 L32 12 M12 20 L32 32 M12 44 L32 32 M12 44 L32 54 M12 20 L32 54 M32 12 L52 32 M32 32 L52 32 M32 54 L52 32" style="stroke-width:1.8;opacity:.8"/><circle class="b" cx="12" cy="20" r="6"/><circle class="b" cx="12" cy="44" r="6"/><circle class="b" cx="32" cy="12" r="6"/><circle class="b" cx="32" cy="54" r="6"/><circle class="f" cx="32" cy="32" r="8"/><circle class="dot bl" cx="29.5" cy="31" r="1.4"/><circle class="dot bl" cx="34.5" cy="31" r="1.4"/><path class="o" d="M29 35.5 Q32 38 35 35.5" style="stroke-width:2"/><circle class="b" cx="52" cy="32" r="7"/></svg><span class="mono">Machine learning</span></div><div class="chips"><span class="chip">PyTorch</span><span class="chip">TensorFlow</span><span class="chip">TFLite</span><span class="chip">ONNX Runtime</span><span class="chip">Quantization-aware training</span><span class="chip">On-device inference</span><span class="chip">scikit-learn</span><span class="chip">OpenCV</span></div></div>
@@ -545,13 +638,42 @@ footer .big a:hover{border-color:var(--hot)}
 
 <footer id="contact">
   <div class="wrap">
-    <p class="big rv">Building something on the device? <a href="mailto:mge.goat@gmail.com">Let's talk.</a></p>
+    <div class="cta-wrap">
+      <div class="cta-text">
+        <span class="eyebrow mono rv">Say hello</span>
+        <p class="big rv">Building something on the device? <a class="gshift" href="mailto:mge.goat@gmail.com">Let's talk.</a></p>
+        <div class="cta-actions rv">
+          <a class="btn primary" href="mailto:mge.goat@gmail.com">Email me</a>
+          <button class="btn" id="copy" type="button">Copy email</button>
+          <a class="btn" href="https://github.com/MGE-GOAT" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </div>
+      <div class="mascot mini" id="mascot2" role="button" tabindex="0" aria-label="Say Hey Noban to the device">
+        <div class="bubble">Hey Noban!</div>
+        <svg viewBox="0 0 320 320" aria-hidden="true">
+          <ellipse cx="160" cy="296" rx="84" ry="10" fill="var(--ink)" opacity=".12"/>
+          <circle class="ring" cx="160" cy="160" r="150"/><circle class="ring" cx="160" cy="160" r="150"/><circle class="ring" cx="160" cy="160" r="150"/>
+          <rect class="sticker" x="70" y="80" width="200" height="200" rx="52"/>
+          <rect class="body" x="60" y="68" width="200" height="200" rx="52"/>
+          <rect class="body" x="36" y="132" width="26" height="62" rx="13"/>
+          <rect class="body" x="258" y="132" width="26" height="62" rx="13"/>
+          <rect class="screen" x="86" y="96" width="148" height="104" rx="34"/>
+          <g class="eyes meyes"><rect x="118" y="128" width="26" height="42" rx="13"/><rect x="176" y="128" width="26" height="42" rx="13"/></g>
+          <path class="happy" d="M114 158 Q131 132 148 158"/><path class="happy" d="M172 158 Q189 132 206 158"/>
+          <circle class="led" cx="226" cy="224" r="7"/>
+          <g class="dots"><circle cx="108" cy="224" r="5"/><circle cx="130" cy="224" r="5"/><circle cx="152" cy="224" r="5"/><circle cx="174" cy="224" r="5"/></g>
+          <path class="ink" d="M160 68 V44"/><circle data-ant cx="160" cy="38" r="9"/>
+        </svg>
+      </div>
+    </div>
     <div class="row mono">
       <span>mge.goat@gmail.com</span>
       <span><a href="https://github.com/MGE-GOAT" target="_blank" rel="noopener">github.com/MGE-GOAT</a></span>
       <span>© 2026 Mahrad Ghazli</span>
     </div>
   </div>
+  <svg class="fwave" viewBox="0 0 2400 120" preserveAspectRatio="none" aria-hidden="true">
+<path class="w1" d="M0,60.0 L12,64.0 L24,67.8 L36,71.3 L48,74.3 L60,76.7 L72,78.5 L84,79.5 L96,79.9 L108,79.5 L120,78.6 L132,77.2 L144,75.4 L156,73.3 L168,71.2 L180,69.2 L192,67.2 L204,65.6 L216,64.2 L228,63.2 L240,62.6 L252,62.2 L264,62.2 L276,62.2 L288,62.3 L300,62.4 L312,62.3 L324,61.9 L336,61.2 L348,60.1 L360,58.6 L372,56.7 L384,54.5 L396,51.9 L408,49.3 L420,46.6 L432,44.1 L444,41.8 L456,40.0 L468,38.7 L480,38.1 L492,38.2 L504,39.1 L516,40.7 L528,43.0 L540,45.9 L552,49.3 L564,53.0 L576,56.9 L588,60.8 L600,64.6 L612,68.0 L624,71.0 L636,73.5 L648,75.3 L660,76.4 L672,76.9 L684,76.8 L696,76.2 L708,75.2 L720,73.9 L732,72.4 L744,70.8 L756,69.4 L768,68.1 L780,67.1 L792,66.4 L804,66.0 L816,65.9 L828,66.0 L840,66.3 L852,66.6 L864,66.9 L876,67.0 L888,66.9 L900,66.3 L912,65.3 L924,63.9 L936,62.0 L948,59.6 L960,56.8 L972,53.8 L984,50.7 L996,47.5 L1008,44.5 L1020,41.8 L1032,39.6 L1044,38.0 L1056,37.1 L1068,36.9 L1080,37.5 L1092,38.9 L1104,40.9 L1116,43.6 L1128,46.8 L1140,50.3 L1152,54.0 L1164,57.8 L1176,61.3 L1188,64.6 L1200,67.4 L1212,69.7 L1224,71.5 L1236,72.7 L1248,73.3 L1260,73.3 L1272,73.0 L1284,72.3 L1296,71.4 L1308,70.4 L1320,69.5 L1332,68.7 L1344,68.1 L1356,67.8 L1368,67.7 L1380,68.0 L1392,68.5 L1404,69.2 L1416,69.9 L1428,70.6 L1440,71.1 L1452,71.4 L1464,71.2 L1476,70.6 L1488,69.5 L1500,67.8 L1512,65.6 L1524,62.9 L1536,59.7 L1548,56.3 L1560,52.8 L1572,49.2 L1584,45.9 L1596,42.8 L1608,40.3 L1620,38.3 L1632,37.1 L1644,36.6 L1656,37.0 L1668,38.0 L1680,39.8 L1692,42.2 L1704,45.1 L1716,48.3 L1728,51.6 L1740,55.0 L1752,58.2 L1764,61.2 L1776,63.7 L1788,65.8 L1800,67.4 L1812,68.5 L1824,69.1 L1836,69.2 L1848,69.1 L1860,68.7 L1872,68.2 L1884,67.7 L1896,67.3 L1908,67.1 L1920,67.2 L1932,67.5 L1944,68.2 L1956,69.1 L1968,70.3 L1980,71.5 L1992,72.8 L2004,73.9 L2016,74.7 L2028,75.2 L2040,75.2 L2052,74.6 L2064,73.4 L2076,71.6 L2088,69.2 L2100,66.3 L2112,62.9 L2124,59.3 L2136,55.4 L2148,51.6 L2160,48.0 L2172,44.7 L2184,41.8 L2196,39.7 L2208,38.2 L2220,37.4 L2232,37.5 L2244,38.2 L2256,39.7 L2268,41.7 L2280,44.2 L2292,47.0 L2304,49.9 L2316,52.8 L2328,55.6 L2340,58.1 L2352,60.2 L2364,62.0 L2376,63.3 L2388,64.1 L2400,64.6"/><path class="w2" d="M0,76.0 L12,74.9 L24,73.4 L36,71.6 L48,69.6 L60,67.6 L72,65.6 L84,63.8 L96,62.2 L108,60.9 L120,59.9 L132,59.2 L144,58.7 L156,58.6 L168,58.5 L180,58.6 L192,58.7 L204,58.7 L216,58.5 L228,58.2 L240,57.5 L252,56.6 L264,55.4 L276,54.0 L288,52.4 L300,50.8 L312,49.1 L324,47.6 L336,46.2 L348,45.2 L360,44.6 L372,44.5 L384,45.0 L396,46.0 L408,47.5 L420,49.5 L432,52.0 L444,54.8 L456,57.8 L468,60.8 L480,63.9 L492,66.7 L504,69.3 L516,71.5 L528,73.2 L540,74.3 L552,74.9 L564,75.0 L576,74.6 L588,73.8 L600,72.6 L612,71.2 L624,69.7 L636,68.1 L648,66.6 L660,65.2 L672,64.1 L684,63.2 L696,62.5 L708,62.2 L720,62.0 L732,62.0 L744,62.1 L756,62.2 L768,62.2 L780,62.1 L792,61.7 L804,61.0 L816,60.0 L828,58.7 L840,57.1 L852,55.2 L864,53.2 L876,51.1 L888,49.0 L900,47.1 L912,45.4 L924,44.1 L936,43.3 L948,43.0 L960,43.2 L972,44.1 L984,45.5 L996,47.4 L1008,49.8 L1020,52.5 L1032,55.4 L1044,58.4 L1056,61.4 L1068,64.2 L1080,66.8 L1092,68.9 L1104,70.6 L1116,71.8 L1128,72.5 L1140,72.8 L1152,72.6 L1164,72.0 L1176,71.1 L1188,70.1 L1200,69.0 L1212,67.9 L1224,66.8 L1236,66.0 L1248,65.3 L1260,64.9 L1272,64.8 L1284,64.8 L1296,65.0 L1308,65.3 L1320,65.5 L1332,65.7 L1344,65.8 L1356,65.5 L1368,65.0 L1380,64.1 L1392,62.8 L1404,61.2 L1416,59.2 L1428,57.0 L1440,54.6 L1452,52.1 L1464,49.7 L1476,47.4 L1488,45.4 L1500,43.8 L1512,42.7 L1524,42.2 L1536,42.3 L1548,42.9 L1560,44.1 L1572,45.9 L1584,48.1 L1596,50.6 L1608,53.4 L1620,56.2 L1632,59.0 L1644,61.7 L1656,64.0 L1668,66.1 L1680,67.7 L1692,68.9 L1704,69.6 L1716,69.9 L1728,69.9 L1740,69.5 L1752,69.0 L1764,68.3 L1776,67.6 L1788,66.9 L1800,66.4 L1812,66.1 L1824,66.0 L1836,66.1 L1848,66.4 L1860,66.9 L1872,67.5 L1884,68.1 L1896,68.6 L1908,69.0 L1920,69.1 L1932,68.9 L1944,68.3 L1956,67.2 L1968,65.8 L1980,63.9 L1992,61.6 L2004,59.1 L2016,56.4 L2028,53.6 L2040,50.9 L2052,48.4 L2064,46.1 L2076,44.3 L2088,43.0 L2100,42.2 L2112,42.1 L2124,42.5 L2136,43.5 L2148,45.0 L2160,47.0 L2172,49.3 L2184,51.7 L2196,54.3 L2208,56.8 L2220,59.2 L2232,61.4 L2244,63.2 L2256,64.6 L2268,65.7 L2280,66.4 L2292,66.7 L2304,66.7 L2316,66.5 L2328,66.2 L2340,65.9 L2352,65.5 L2364,65.3 L2376,65.3 L2388,65.5 L2400,65.9"/><path class="w3" d="M0,58.5 L12,57.3 L24,56.7 L36,56.5 L48,56.7 L60,56.9 L72,57.0 L84,56.8 L96,56.2 L108,55.2 L120,53.9 L132,52.5 L144,51.2 L156,50.2 L168,49.8 L180,50.2 L192,51.5 L204,53.6 L216,56.4 L228,59.6 L240,63.0 L252,66.3 L264,69.1 L276,71.1 L288,72.2 L300,72.4 L312,71.6 L324,70.2 L336,68.2 L348,66.0 L360,63.8 L372,62.0 L384,60.6 L396,59.7 L408,59.3 L420,59.2 L432,59.3 L444,59.3 L456,59.1 L468,58.4 L480,57.3 L492,55.8 L504,53.9 L516,52.0 L528,50.2 L540,48.9 L552,48.3 L564,48.5 L576,49.7 L588,51.7 L600,54.5 L612,57.8 L624,61.3 L636,64.6 L648,67.4 L660,69.5 L672,70.8 L684,71.1 L696,70.6 L708,69.5 L720,67.9 L732,66.2 L744,64.6 L756,63.3 L768,62.4 L780,61.9 L792,61.8 L804,61.9 L816,62.0 L828,61.9 L840,61.4 L852,60.3 L864,58.8 L876,56.8 L888,54.4 L900,52.0 L912,49.8 L924,48.2 L936,47.3 L948,47.3 L960,48.3 L972,50.2 L984,52.9 L996,56.1 L1008,59.5 L1020,62.7 L1032,65.5 L1044,67.6 L1056,68.9 L1068,69.4 L1080,69.1 L1092,68.3 L1104,67.2 L1116,66.0 L1128,64.9 L1140,64.1 L1152,63.8 L1164,63.8 L1176,64.0 L1188,64.4 L1200,64.6 L1212,64.5 L1224,63.8 L1236,62.5 L1248,60.6 L1260,58.1 L1272,55.4 L1284,52.6 L1296,50.0 L1308,48.0 L1320,46.8 L1332,46.6 L1344,47.4 L1356,49.1 L1368,51.6 L1380,54.6 L1392,57.7 L1404,60.8 L1416,63.4 L1428,65.4 L1440,66.6 L1452,67.2 L1464,67.1 L1476,66.6 L1488,65.9 L1500,65.2 L1512,64.7 L1524,64.5 L1536,64.7 L1548,65.3 L1560,66.0 L1572,66.6 L1584,67.0 L1596,66.9 L1608,66.2 L1620,64.7 L1632,62.6 L1644,59.8 L1656,56.7 L1668,53.6 L1680,50.8 L1692,48.5 L1704,47.0 L1716,46.6 L1728,47.1 L1740,48.6 L1752,50.8 L1764,53.4 L1776,56.3 L1788,59.0 L1800,61.3 L1812,63.1 L1824,64.2 L1836,64.7 L1848,64.7 L1860,64.5 L1872,64.1 L1884,63.8 L1896,63.9 L1908,64.3 L1920,65.2 L1932,66.3 L1944,67.4 L1956,68.5 L1968,69.1 L1980,69.2 L1992,68.4 L2004,66.9 L2016,64.6 L2028,61.7 L2040,58.4 L2052,55.0 L2064,52.0 L2076,49.5 L2088,47.8 L2100,47.1 L2112,47.4 L2124,48.6 L2136,50.4 L2148,52.7 L2160,55.2 L2172,57.5 L2184,59.4 L2196,60.8 L2208,61.7 L2220,62.1 L2232,62.1 L2244,62.0 L2256,61.9 L2268,62.1 L2280,62.7 L2292,63.7 L2304,65.1 L2316,66.7 L2328,68.4 L2340,69.8 L2352,70.8 L2364,71.0 L2376,70.4 L2388,68.9 L2400,66.5"/></svg>
 </footer>
 
 <script>
@@ -640,27 +762,52 @@ footer .big a:hover{border-color:var(--hot)}
   var hero=document.querySelector('.hero');
   hero.addEventListener('pointermove',function(e){var r=hero.getBoundingClientRect();hero.style.setProperty('--gx',(e.clientX-r.left)+'px');hero.style.setProperty('--gy',(e.clientY-r.top)+'px')});
 
-  /* mascot: eyes follow, blink, wake on click */
-  var m=document.getElementById('mascot'), eyes=document.getElementById('eyes'), bub=document.getElementById('bubble');
+  /* mascots: eyes follow, blink, wake on click */
+  var mascots=[].slice.call(document.querySelectorAll('.mascot')).map(function(m){
+    var eyes=m.querySelector('.meyes'), bub=m.querySelector('.bubble'), tm, t2;
+    eyes.style.transition='transform .15s ease-out';
+    function wake(){
+      m.classList.add('awake'); if(bub){bub.textContent='Hey Noban!';bub.classList.add('on')}
+      clearTimeout(tm); clearTimeout(t2);
+      t2=setTimeout(function(){if(bub)bub.textContent='Yes? I am listening.'},800);
+      tm=setTimeout(function(){m.classList.remove('awake');if(bub)bub.classList.remove('on')},2600);
+      if(m.getAttribute('data-wave')){var w=document.getElementById('wavebox'); if(w)w.click()}
+    }
+    m.addEventListener('click',wake);
+    m.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();wake()}});
+    return {m:m,eyes:eyes};
+  });
   function look(e){
-    var r=m.getBoundingClientRect(), cx=r.left+r.width/2, cy=r.top+r.height*.5;
-    var dx=e.clientX-cx, dy=e.clientY-cy, d=Math.hypot(dx,dy)||1, k=Math.min(d,260)/260;
-    eyes.style.transform='translate('+(dx/d*10*k)+'px,'+(dy/d*7*k)+'px)';
+    mascots.forEach(function(o){
+      var r=o.m.getBoundingClientRect(); if(r.bottom<0||r.top>innerHeight)return;
+      var cx=r.left+r.width/2, cy=r.top+r.height*.5, dx=e.clientX-cx, dy=e.clientY-cy, d=Math.hypot(dx,dy)||1, k=Math.min(d,260)/260;
+      o.eyes.style.transform='translate('+(dx/d*10*k)+'px,'+(dy/d*7*k)+'px)';
+    });
   }
   if(!reduce){
     addEventListener('pointermove',look,{passive:true});
-    (function blink(){eyes.classList.add('blink');setTimeout(function(){eyes.classList.remove('blink')},140);setTimeout(blink,2200+Math.random()*3200)})();
+    mascots.forEach(function(o){(function blink(){o.eyes.classList.add('blink');setTimeout(function(){o.eyes.classList.remove('blink')},140);setTimeout(blink,2200+Math.random()*3200)})()});
   }
-  eyes.style.transition='transform .15s ease-out';
-  var tm;
-  window.wakeNoban=function(){
-    m.classList.add('awake'); bub.textContent='Hey Noban!'; bub.classList.add('on');
-    clearTimeout(tm);
-    setTimeout(function(){bub.textContent='Yes? I am listening.'},800);
-    tm=setTimeout(function(){m.classList.remove('awake');bub.classList.remove('on')},2600);
-  };
-  m.addEventListener('click',function(){window.wakeNoban(); document.getElementById('wavebox').click()});
-  m.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();m.click()}});
+
+  /* typed "currently" line */
+  var tEl=document.getElementById('typed');
+  if(tEl){
+    var phrases=['shipping wake words to a Raspberry Pi','building agents that answer from real data','teaching small models to hear','wiring AI into a real CRM','keeping every number honest'];
+    if(reduce){tEl.textContent=phrases[0]}
+    else{var pi=0,ci=0,del=false;(function tick(){
+      var p=phrases[pi];
+      if(!del){ci++;tEl.textContent=p.slice(0,ci);if(ci===p.length){del=true;return setTimeout(tick,1900)}}
+      else{ci--;tEl.textContent=p.slice(0,ci);if(ci===0){del=false;pi=(pi+1)%phrases.length;return setTimeout(tick,350)}}
+      setTimeout(tick,del?22:55);
+    })()}
+  }
+
+  /* copy email */
+  var cp=document.getElementById('copy');
+  if(cp)cp.addEventListener('click',function(){
+    var txt='mge.goat@gmail.com', done=function(){cp.textContent='Copied ✓';setTimeout(function(){cp.textContent='Copy email'},1700)};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done,done)}else{done()}
+  });
 
   /* card spotlight */
   document.querySelectorAll('.card').forEach(function(c){
