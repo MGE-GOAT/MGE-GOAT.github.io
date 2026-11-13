@@ -9,14 +9,14 @@
 <meta property="og:title" content="Mahrad Ghazli">
 <meta property="og:description" content="I build AI that runs on the device, close to the metal, and agents that answer from real data.">
 <meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0b0d'/%3E%3Cpath d='M6 34h10l5-18 8 34 7-28 5 12h17' fill='none' stroke='%236df0b0' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0b0d'/%3E%3Cpath d='M6 34h10l5-18 8 34 7-28 5 12h17' fill='none' stroke='%234f8cff' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;450;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script>document.documentElement.classList.add('js')</script>
 <style>
 :root{
-  --bg:#0a0b0d; --bg2:#101216; --ink:#ecebe6; --mute:#8b9098; --line:#1d2026; --acc:#6df0b0; --accink:#06140d;
+  --bg:#090b10; --bg2:#0f131b; --ink:#ecebe6; --mute:#8b9098; --line:#1c2230; --acc:#4f8cff; --acc2:#9b7bff; --hot:#ff7a59; --accink:#050b18;
   --serif:'Instrument Serif',Georgia,'Times New Roman',serif;
   --sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
   --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
@@ -24,11 +24,11 @@
 }
 @media (prefers-color-scheme:light){
   :root:not([data-theme="dark"]){
-    --bg:#f4f2ec; --bg2:#ebe8e0; --ink:#101113; --mute:#5b5f67; --line:#d8d4c8; --acc:#0b7d52; --accink:#f4f2ec; color-scheme:light;
+    --bg:#f4f2ec; --bg2:#ebe8e0; --ink:#101113; --mute:#5b5f67; --line:#d8d4c8; --acc:#1f5fe0; --acc2:#6a4be0; --hot:#e5532f; --accink:#ffffff; color-scheme:light;
   }
 }
 :root[data-theme="light"]{
-  --bg:#f4f2ec; --bg2:#ebe8e0; --ink:#101113; --mute:#5b5f67; --line:#d8d4c8; --acc:#0b7d52; --accink:#f4f2ec; color-scheme:light;
+  --bg:#f4f2ec; --bg2:#ebe8e0; --ink:#101113; --mute:#5b5f67; --line:#d8d4c8; --acc:#1f5fe0; --acc2:#6a4be0; --hot:#e5532f; --accink:#ffffff; color-scheme:light;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -216,6 +216,69 @@ footer .row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;m
   .ch{animation:none;opacity:1;transform:none}
   .mascot svg,.ticker .track,.ic *,.mascot .led{animation:none !important}
 }
+
+/* ---------- palette: mint + cyan (neighbours) with a coral outsider ---------- */
+:root{--grad:linear-gradient(100deg,var(--acc),var(--acc2))}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(620px circle at 8% 12%,color-mix(in srgb,var(--acc2) 11%,transparent),transparent 70%),
+             radial-gradient(560px circle at 96% 88%,color-mix(in srgb,var(--hot) 9%,transparent),transparent 70%)}
+.hero::before{background:radial-gradient(520px circle at var(--gx,70%) var(--gy,35%),color-mix(in srgb,var(--acc) 13%,transparent),transparent 70%),radial-gradient(420px circle at calc(var(--gx,70%) + 140px) calc(var(--gy,35%) + 90px),color-mix(in srgb,var(--acc2) 10%,transparent),transparent 70%)}
+h1 em{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+h1 em:has(.ch){background:none;-webkit-text-fill-color:initial}
+h1 em .ch{color:color-mix(in srgb,var(--acc),var(--acc2) calc(var(--k,0)*100%))}
+.btn.primary{background:var(--grad);border-color:transparent}
+.btn.primary:hover{box-shadow:0 8px 30px -8px var(--acc2)}
+.progress{background:linear-gradient(90deg,var(--acc),var(--acc2),var(--hot))}
+.logo i{background:var(--hot);box-shadow:0 0 12px var(--hot)}
+.stat b{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.card::after{height:2px;background:linear-gradient(90deg,var(--acc),var(--acc2),var(--hot))}
+.card::before{background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),color-mix(in srgb,var(--acc2) 15%,transparent),transparent 70%)}
+.card:hover{border-color:color-mix(in srgb,var(--acc2) 55%,var(--line))}
+.card .m{color:var(--acc2)}
+.card:nth-child(3n+2) .m{color:var(--acc)}
+.card:nth-child(3n) .m{color:var(--hot)}
+.ic .sh{fill:var(--acc2);opacity:.4}
+.ticker span.s{color:var(--hot)}
+.papers .tag.ok{color:var(--acc)}
+.papers .tag.rev{color:var(--acc2)}
+.papers .tag.prep{color:var(--hot)}
+.mascot .sticker{fill:var(--acc2)}
+.mascot .led{fill:var(--hot)}
+.mascot .ring{stroke:var(--acc2)}
+.mascot svg [data-ant]{fill:var(--hot)}
+.sec-h::before{background:linear-gradient(90deg,var(--acc),var(--acc2),var(--hot))}
+.sec-h.in::before{transform:scaleX(.2)}
+footer .big a{color:var(--hot);border-color:color-mix(in srgb,var(--hot) 45%,transparent)}
+footer .big a:hover{border-color:var(--hot)}
+.status.hit b{color:var(--hot)}
+
+/* ---------- toolbox ---------- */
+.tools{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.tool{--c:var(--acc);position:relative;padding:24px;border:1px solid color-mix(in srgb,var(--c) 28%,var(--line));border-radius:18px;
+  background:linear-gradient(160deg,color-mix(in srgb,var(--c) 9%,var(--bg2)),var(--bg) 70%);overflow:hidden;transition:.3s}
+.tool::after{content:"";position:absolute;right:-60px;top:-60px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--c) 22%,transparent),transparent 70%);transition:.5s;pointer-events:none}
+.tool:hover{border-color:color-mix(in srgb,var(--c) 65%,var(--line));transform:translateY(-3px)}
+.tool:hover::after{transform:scale(1.35)}
+.tool.t2{--c:var(--acc2)} .tool.t3{--c:var(--hot)} .tool.t4{--c:var(--acc)}
+.tool.t4{border-image:none}
+.tool .hd{display:flex;align-items:center;gap:14px;margin-bottom:18px;position:relative}
+.tool .hd .ic{width:46px;height:46px}
+.tool .hd .ic .f{fill:var(--c)}
+.tool .hd .ic .sh{fill:var(--c)}
+.tool .hd span{color:var(--c)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;position:relative}
+.chip{display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border-radius:999px;font-size:.88rem;line-height:1;
+  border:1px solid color-mix(in srgb,var(--c) 38%,var(--line));background:color-mix(in srgb,var(--c) 10%,transparent);
+  transition:transform .2s,background .2s,box-shadow .2s,color .2s;cursor:default}
+.chip::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--c);box-shadow:0 0 8px var(--c)}
+.chip:hover{transform:translateY(-3px) rotate(-1.5deg);background:var(--c);color:var(--accink);box-shadow:0 8px 22px -8px var(--c)}
+.chip:hover::before{background:var(--accink);box-shadow:none}
+.js .tool .chip{opacity:0;transform:translateY(10px) scale(.94)}
+.js .tool.in .chip{animation:pop .5s cubic-bezier(.2,.9,.3,1.2) forwards;animation-delay:calc(var(--j)*38ms + 150ms)}
+@keyframes pop{to{opacity:1;transform:none}}
+.js .tool.in .chip:hover{animation:none;opacity:1}
+@media (max-width:760px){.tools{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.js .tool .chip{opacity:1;transform:none;animation:none !important}}
 </style>
 </head>
 <body>
@@ -260,7 +323,7 @@ footer .row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;m
           <path class="happy" d="M114 158 Q131 132 148 158"/><path class="happy" d="M172 158 Q189 132 206 158"/>
           <circle class="led" cx="226" cy="224" r="7"/>
           <g class="dots"><circle cx="108" cy="224" r="5"/><circle cx="130" cy="224" r="5"/><circle cx="152" cy="224" r="5"/><circle cx="174" cy="224" r="5"/></g>
-          <path class="ink" d="M160 68 V44"/><circle class="sticker" cx="160" cy="38" r="9"/>
+          <path class="ink" d="M160 68 V44"/><circle data-ant cx="160" cy="38" r="9"/>
         </svg>
         <span class="mono hint">click me</span>
       </div>
@@ -315,9 +378,9 @@ footer .row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;m
       <ul class="papers rv">
         <li><span class="mono tag ok">ICBME 2026 · accepted</span>
           <div><p>Noban: An Edge-Triggered Private Voice Assistant for Elderly Emergency Response</p><small>M. Ghazli, H. Mohammadzadeh</small></div></li>
-        <li><span class="mono tag">IEEE Sensors Journal · under review</span>
+        <li><span class="mono tag rev">IEEE Sensors Journal · under review</span>
           <div><p>A Bench-Measurement Framework for Anticipating Microphone-Induced Degradation of Always-On Keyword Spotting</p><small>M. Ghazli, H. Mohammadzadeh</small></div></li>
-        <li><span class="mono tag">ICEE 2027 · in preparation</span>
+        <li><span class="mono tag prep">ICEE 2027 · in preparation</span>
           <div><p>A Compact Persian Wake-Word Model for Always-Listening Devices</p><small>M. Ghazli, H. Mohammadzadeh</small></div></li>
       </ul>
       <p class="mono rv" style="margin-top:22px">M.Sc. Biomedical Engineering (Bioelectric), Sharif University of Technology · advisor Dr. Hoda Mohammadzadeh</p>
@@ -354,11 +417,11 @@ footer .row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;m
   <section id="stack">
     <div class="wrap">
       <div class="sec-h rv"><span class="mono">04</span><h2>Toolbox</h2></div>
-      <div class="stack rv">
-        <div><span class="mono">Languages</span><p>Python, C++, C, Rust, Bash, SQL, Dart</p></div>
-        <div><span class="mono">ML</span><p>PyTorch, TensorFlow and TFLite, quantization-aware training, on-device inference, ONNX Runtime, scikit-learn, OpenCV</p></div>
-        <div><span class="mono">Agents</span><p>LangGraph, LangChain, tool-using agents, RAG, GraphRAG, (Q)LoRA, evals, local LLMs with llama.cpp</p></div>
-        <div><span class="mono">Systems</span><p>Linux, eBPF, real-time audio, Docker, Raspberry Pi, FastAPI, gRPC, WebRTC, MQTT, PostgreSQL, Airflow</p></div>
+      <div class="tools">
+        <div class="tool t1 rv"><div class="hd"><svg class="ic" viewBox="0 0 64 64" aria-hidden="true"><rect class="sh" x="12" y="14" width="46" height="40" rx="12"/><rect class="b" x="8" y="10" width="46" height="40" rx="12"/><path class="o" d="M24 22 L15 30 L24 38 M38 22 L47 30 L38 38" style="stroke-width:3.2"/><path class="f" d="M34 18 L28 42" style="stroke-width:3.4"/><circle class="dot" cx="21" cy="45" r="1.3"/><circle class="dot" cx="41" cy="45" r="1.3"/></svg><span class="mono">Languages</span></div><div class="chips"><span class="chip">Python</span><span class="chip">C++</span><span class="chip">C</span><span class="chip">Rust</span><span class="chip">Bash</span><span class="chip">SQL</span><span class="chip">Dart</span></div></div>
+        <div class="tool t2 rv"><div class="hd"><svg class="ic" viewBox="0 0 64 64" aria-hidden="true"><path class="o" d="M12 20 L32 12 M12 20 L32 32 M12 44 L32 32 M12 44 L32 54 M12 20 L32 54 M32 12 L52 32 M32 32 L52 32 M32 54 L52 32" style="stroke-width:1.8;opacity:.8"/><circle class="b" cx="12" cy="20" r="6"/><circle class="b" cx="12" cy="44" r="6"/><circle class="b" cx="32" cy="12" r="6"/><circle class="b" cx="32" cy="54" r="6"/><circle class="f" cx="32" cy="32" r="8"/><circle class="dot" cx="29.5" cy="31" r="1.4"/><circle class="dot" cx="34.5" cy="31" r="1.4"/><path class="o" d="M29 35.5 Q32 38 35 35.5" style="stroke-width:2"/><circle class="b" cx="52" cy="32" r="7"/></svg><span class="mono">Machine learning</span></div><div class="chips"><span class="chip">PyTorch</span><span class="chip">TensorFlow</span><span class="chip">TFLite</span><span class="chip">ONNX Runtime</span><span class="chip">Quantization-aware training</span><span class="chip">On-device inference</span><span class="chip">scikit-learn</span><span class="chip">OpenCV</span></div></div>
+        <div class="tool t3 rv"><div class="hd"><svg class="ic" viewBox="0 0 64 64" aria-hidden="true"><rect class="sh" x="14" y="18" width="42" height="38" rx="14"/><path class="o" d="M32 12 V6"/><circle class="f" cx="32" cy="5" r="3.4"/><rect class="b" x="9" y="13" width="42" height="38" rx="14"/><rect class="scr" x="15" y="20" width="30" height="20" rx="9"/><rect class="eye" x="22" y="25" width="5" height="9" rx="2.5"/><rect class="eye" x="33" y="25" width="5" height="9" rx="2.5"/><rect class="b" x="3" y="26" width="6" height="12" rx="3"/><rect class="b" x="51" y="26" width="6" height="12" rx="3"/><path class="o" d="M23 45 Q30 49 37 45" style="stroke-width:2.2"/></svg><span class="mono">Agents</span></div><div class="chips"><span class="chip">LangGraph</span><span class="chip">LangChain</span><span class="chip">Tool-using agents</span><span class="chip">RAG</span><span class="chip">GraphRAG</span><span class="chip">(Q)LoRA</span><span class="chip">Evals</span><span class="chip">llama.cpp</span></div></div>
+        <div class="tool t4 rv"><div class="hd"><svg class="ic" viewBox="0 0 64 64" aria-hidden="true"><rect class="sh" x="12" y="16" width="46" height="40" rx="10"/><rect class="b" x="8" y="12" width="46" height="40" rx="10"/><path class="o" d="M8 24 H54" style="stroke-width:2.2"/><circle class="f" cx="16" cy="18" r="2.2" style="stroke-width:1.6"/><circle class="b" cx="23" cy="18" r="2.2" style="stroke-width:1.6"/><circle class="b" cx="30" cy="18" r="2.2" style="stroke-width:1.6"/><path class="o" d="M17 33 L25 39 L17 45" style="stroke-width:3.2"/><path class="f" d="M30 45 H42" style="stroke-width:3.4"/></svg><span class="mono">Systems</span></div><div class="chips"><span class="chip">Linux</span><span class="chip">eBPF</span><span class="chip">Real-time audio</span><span class="chip">Docker</span><span class="chip">Raspberry Pi</span><span class="chip">FastAPI</span><span class="chip">gRPC</span><span class="chip">WebRTC</span><span class="chip">MQTT</span><span class="chip">PostgreSQL</span><span class="chip">Airflow</span></div></div>
       </div>
     </div>
   </section>
@@ -404,7 +467,7 @@ footer .row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;m
     boost=1; hitUntil=performance.now()+1900; state.textContent='wake word detected'; st.classList.add('hit');
   });
   function color(){
-    if(!draw.color){var c=getComputedStyle(root).getPropertyValue('--acc').trim()||'#6df0b0'; draw.color=c}
+    if(!draw.color){var cs=getComputedStyle(root); draw.color=[cs.getPropertyValue('--acc').trim()||'#4f8cff',cs.getPropertyValue('--acc2').trim()||'#9b7bff',cs.getPropertyValue('--hot').trim()||'#ff7a59']}
     return draw.color;
   }
   function draw(now){
@@ -424,7 +487,7 @@ footer .row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;m
         if(x===0)ctx.moveTo(x,y); else ctx.lineTo(x,y);
       }
       ctx.lineWidth=layer===0?1.8:1;
-      ctx.strokeStyle=col; ctx.globalAlpha=layer===0?.95:.22/layer; ctx.stroke();
+      ctx.strokeStyle=col[layer]; ctx.globalAlpha=layer===0?.95:(layer===1?.55:.4); ctx.stroke();
     }
     ctx.globalAlpha=1;
     if(!reduce) requestAnimationFrame(draw);
@@ -455,6 +518,8 @@ footer .row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;m
     })(h1);
   }
 
+  var em=document.querySelectorAll('h1 em .ch'); em.forEach(function(c,n){c.style.setProperty('--k',em.length>1?n/(em.length-1):0)});
+  document.querySelectorAll('.tool').forEach(function(t){t.querySelectorAll('.chip').forEach(function(c,n){c.style.setProperty('--j',n)})});
   /* hero glow follows the pointer */
   var hero=document.querySelector('.hero');
   hero.addEventListener('pointermove',function(e){var r=hero.getBoundingClientRect();hero.style.setProperty('--gx',(e.clientX-r.left)+'px');hero.style.setProperty('--gy',(e.clientY-r.top)+'px')});
