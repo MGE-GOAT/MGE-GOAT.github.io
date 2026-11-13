@@ -412,6 +412,25 @@ footer .row{margin-top:56px;position:relative;z-index:2}
 footer{padding-bottom:0}
 @media (max-width:860px){.about{grid-template-columns:1fr}.about-cards{grid-template-columns:1fr}.cta-wrap{grid-template-columns:1fr}.mascot.mini{margin:10px 0 0;max-width:200px}.orbit{display:none}}
 @media (prefers-reduced-motion:reduce){.caret,.btn.primary,.orb,.fwave,.facts i,h1 em .ch{animation:none !important}.pips i.on::after{transform:scaleX(1)}h1 em .ch{opacity:1;transform:none}}
+
+/* ---------- language speech bubbles ---------- */
+.lang{grid-template-columns:62px 78px 1fr 112px !important}
+.lbub{position:relative;display:grid;place-items:center;width:58px;height:34px;border-radius:14px 14px 14px 4px;border:1.5px solid color-mix(in srgb,var(--c,var(--acc)) 60%,var(--line));
+  background:color-mix(in srgb,var(--c,var(--acc)) 13%,var(--bg));animation:lbob 3.4s ease-in-out infinite;animation-delay:var(--d)}
+.lang:nth-of-type(2) .lbub{--c:var(--acc2)}.lang:nth-of-type(3) .lbub{--c:var(--hot)}.lang:nth-of-type(4) .lbub{--c:var(--acc)}
+.lbub::after{content:"";position:absolute;left:7px;bottom:-7px;width:10px;height:10px;background:inherit;border-left:1.5px solid color-mix(in srgb,var(--c,var(--acc)) 60%,var(--line));border-bottom:1.5px solid color-mix(in srgb,var(--c,var(--acc)) 60%,var(--line));transform:skewY(-35deg) rotate(0deg);border-radius:0 0 0 4px;clip-path:polygon(0 0,100% 100%,0 100%)}
+.lbub .dots,.lbub .say{grid-area:1/1}
+.lbub .dots{display:flex;gap:4px;font-style:normal;animation:lshow 7s infinite;animation-delay:var(--d)}
+.lbub .dots b{width:5px;height:5px;border-radius:50%;background:var(--c,var(--acc));animation:ldot 1s ease-in-out infinite}
+.lbub .dots b:nth-child(2){animation-delay:.15s}.lbub .dots b:nth-child(3){animation-delay:.3s}
+.lbub .say{font:600 .86rem/1 var(--sans);color:var(--ink);opacity:0;animation:lsay 7s infinite;animation-delay:var(--d)}
+@keyframes lbob{50%{transform:translateY(-4px)}}
+@keyframes ldot{50%{transform:translateY(-3px);opacity:.4}}
+@keyframes lshow{0%,22%{opacity:1}26%,100%{opacity:0}}
+@keyframes lsay{0%,22%{opacity:0;transform:scale(.6)}30%{opacity:1;transform:scale(1.08)}34%,88%{opacity:1;transform:scale(1)}94%,100%{opacity:0;transform:scale(.9)}}
+.lang:hover .lbub{animation:lwig .6s ease-in-out}
+@keyframes lwig{25%{transform:rotate(-7deg) scale(1.08)}60%{transform:rotate(6deg) scale(1.08)}}
+@media (prefers-reduced-motion:reduce){.lbub,.lbub .dots b{animation:none}.lbub .dots{display:none}.lbub .say{opacity:1;animation:none}}
 </style>
 </head>
 <body>
@@ -488,13 +507,10 @@ footer{padding-bottom:0}
             <div class="edu"><b>B.Sc. Biomedical Engineering</b><small>Biomaterials · Islamic Azad University, Science and Research</small><em>2019 to 2022 · GPA 3.4 / 4.0</em></div>
           </div>
           <div class="acard rv"><span class="mono">Languages</span>
-            <div class="lang"><b>English</b><span class="pips"><i class="on" style="--i:0"></i><i class="on" style="--i:1"></i><i class="on" style="--i:2"></i><i class="on" style="--i:3"></i><i class="on" style="--i:4"></i></span><em>Fluent</em></div>
-            <div class="lang"><b>Persian</b><span class="pips"><i class="on" style="--i:0"></i><i class="on" style="--i:1"></i><i class="on" style="--i:2"></i><i class="on" style="--i:3"></i><i class="on" style="--i:4"></i></span><em>Native</em></div>
-            <div class="lang"><b>German</b><span class="pips"><i class="on" style="--i:0"></i><i class="on" style="--i:1"></i><i class="on" style="--i:2"></i><i class="" style="--i:3"></i><i class="" style="--i:4"></i></span><em>Intermediate</em></div>
-            <div class="lang"><b>Chinese</b><span class="pips"><i class="on" style="--i:0"></i><i class="on" style="--i:1"></i><i class="on" style="--i:2"></i><i class="" style="--i:3"></i><i class="" style="--i:4"></i></span><em>Intermediate</em></div>
-          </div>
-          <div class="acard rv wide"><span class="mono">Teaching</span>
-            <p>Teaching assistant at Sharif in Fall 2025 for Computer Vision Laboratory, Biomedical Engineering Laboratory and Neural Modeling.</p>
+            <div class="lang"><span class="lbub" style="--d:0s" aria-hidden="true"><i class="dots"><b></b><b></b><b></b></i><span class="say">Hi</span></span><b>English</b><span class="pips"><i class="on" style="--i:0"></i><i class="on" style="--i:1"></i><i class="on" style="--i:2"></i><i class="on" style="--i:3"></i><i class="on" style="--i:4"></i></span><em>Fluent</em></div>
+            <div class="lang"><span class="lbub" style="--d:1.1s" aria-hidden="true"><i class="dots"><b></b><b></b><b></b></i><span class="say">سلام</span></span><b>Persian</b><span class="pips"><i class="on" style="--i:0"></i><i class="on" style="--i:1"></i><i class="on" style="--i:2"></i><i class="on" style="--i:3"></i><i class="on" style="--i:4"></i></span><em>Native</em></div>
+            <div class="lang"><span class="lbub" style="--d:2.2s" aria-hidden="true"><i class="dots"><b></b><b></b><b></b></i><span class="say">Hallo</span></span><b>German</b><span class="pips"><i class="on" style="--i:0"></i><i class="on" style="--i:1"></i><i class="on" style="--i:2"></i><i class="" style="--i:3"></i><i class="" style="--i:4"></i></span><em>Intermediate</em></div>
+            <div class="lang"><span class="lbub" style="--d:3.3s" aria-hidden="true"><i class="dots"><b></b><b></b><b></b></i><span class="say">你好</span></span><b>Chinese</b><span class="pips"><i class="on" style="--i:0"></i><i class="on" style="--i:1"></i><i class="on" style="--i:2"></i><i class="" style="--i:3"></i><i class="" style="--i:4"></i></span><em>Intermediate</em></div>
           </div>
         </div>
       </div>
